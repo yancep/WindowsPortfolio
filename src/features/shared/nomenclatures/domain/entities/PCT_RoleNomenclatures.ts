@@ -1,0 +1,7 @@
+export type PCT_RoleNomenclatures =
+  | 'PCT_PRESIDENT'
+  | 'PCT_VICE_PRESIDENT'
+  | 'PCT_ADMINISTRATIVE_MANAGER'
+  | 'PCT_CTA_PRESIDENT'
+  | 'PCT_CTA_SECRETARY'
+  | 'PCT_CTA_EXPERT';

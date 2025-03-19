@@ -1,0 +1,178 @@
+{
+  "hello": "Hola",
+  "messages": {
+    "success": {
+      "operationSuccessful": "Operación exitosa"
+    },
+    "error": {
+      "invitationNotFound": "La invitación ya no existe",
+      "contactSuperior": "Contacte con su superior",
+      "invitationExpired": "La invitación ha expirado",
+      "networkError": "Error de red. Por favor, verifica tu conexión a internet.",
+      "unauthorized": "No autorizado. Por favor, inicia sesión nuevamente."
+    }
+  },
+  "layoutText": {
+    "summary": "Resumen",
+    "entities": "Entidades",
+    "managementTeam": "Equipo directivo",
+    "experts": "Expertos",
+    "certification": "Certificación",
+    "confProjects": "Conf-Proyectos",
+    "participants": "Participantes",
+    "projects": "Proyectos",
+    "planning": "Planificación",
+    "objectives": "Objetivos",
+    "results": "Resultados",
+    "activities": "Actividades",
+    "contributions": "Aportes",
+    "duineRegistry": "Registro Duine"
+  },
+  "inputs": {
+    "validationMessages": {
+      "programCodeExists": "Ya existe un programa con ese código",
+      "projectCodeExists": "Ya existe un proyecto con ese código",
+      "required": "Campo requerido",
+      "formatIncorrect": "Formato incorrecto",
+      "usernameUnavailable": "Usuario no disponible",
+      "identityCardUnavailable": "Carnet de identidad no disponible",
+      "emailUnavailable": "Correo electrónico no disponible",
+      "phoneUnavailable": "Teléfono disponible",
+      "bankAccountUnavailable": "Cuenta bancaria no disponible",
+      "passwordMinLength": "La contraseña debe tener 8 caracteres o más",
+      "passwordNumber": "Debe contener un número",
+      "passwordLowercase": "Debe contener una minúscula",
+      "passwordUppercase": "Debe contener una mayúscula",
+      "passwordSymbol": "Debe contener un símbolo",
+      "confirmPasswordMismatch": "Las contraseñas no coinciden",
+      "truncateFormat": "Solo 2 décimas después de la coma",
+      "startDateOutOfRange": "La fecha de inicio está fuera de rango",
+      "endDateGreaterThanStart": "La fecha de fin debe ser mayor que la fecha de inicio",
+      "endDateOutOfRange": "La fecha de fin está fuera de rango"
+    },
+    "labels": {
+      "email": "Correo electrónico",
+      "website": "Sitio web",
+      "contactPhone": "Teléfono de contacto",
+      "phone": "Teléfono",
+      "province": "Provincia",
+      "bankAccount": "Cuenta bancaria",
+      "name": "Nombre",
+      "lastName": "Apellidos",
+      "legalDomicile": "Domicilio legal",
+      "legalInformation": "Descripción legal",
+      "password": {
+        "confirmPassword": "Confirmar contraseña",
+        "passwordRecovery": "Recuperar contraseña"
+      }
+    },
+    "placeholders": {
+      "basic": {
+        "email": "ejemplo@ejemplo.cu",
+        "website": "http://ejemplo.cu",
+        "select": "Seleccionar",
+        "startDate": "Fecha de inicio",
+        "endDate": "Fecha de Fin",
+        "generalInformation": "Información general",
+        "title": "Título",
+        "generalStatistics": "Estadísticas generales"
+      },
+      "person": {
+        "phone": "# ### ####",
+        "bankAccount": "#### #### #### ####",
+        "name": "Nombre",
+        "lastName": "Apellidos",
+        "baseSalary": "Salario básico",
+        "affiliatedEntity": "Entidad a la que pertenece"
+      },
+      "entity": {
+        "legalDomicile": "#10, Calle B, ..",
+        "legalInformation": "Descripción de la entidad"
+      },
+      "program": {
+        "programData": "Datos del programa",
+        "programManager": "Jefe de programa",
+        "programLevel": "Nivel del programa",
+        "shortName": "Nombre abreviado",
+        "code": "Código",
+        "totalProgramBudget": "Presupuesto general del programa",
+        "estimatedProjectsCount": "Cantidad estimada de proyectos"
+      }
+    },
+    "actions": {
+      "register": {
+        "general": "Registrar",
+        "program": "Registrar programa",
+        "person": "Registrar persona",
+        "project": "Registrar proyecto",
+        "executive": "Registrar directivo",
+        "participant": "Registrar participante",
+        "knowledgeContribution": "Registrar aporte al conocimiento",
+        "resultDescription": "Registrar descripción del resultado"
+      },
+      "update": {
+        "general": "Actualizar",
+        "program": "Actualizar programa",
+        "person": "Actualizar persona",
+        "project": "Actualizar proyecto",
+        "executive": "Actualizar directivo",
+        "participant": "Actualizar participante",
+        "knowledgeContribution": "Actualizar aporte al conocimiento",
+        "resultDescription": "Actualizar descripción del resultado"
+      },
+      "passwordRecovery": "Restablecer contraseña",
+      "forgotPassword": "¿Olvidó su contraseña?"
+    },
+    "categories": {
+      "default": "Ninguno",
+      "scientific": "Categoría Científica",
+      "technological": "Categoría Tecnológica",
+      "englishLevel": "Nivel de inglés",
+      "scientificDegree": "Grado Científico",
+      "academicDegree": "Grado Académico",
+      "educational": "Categoría Docente",
+      "dropdowns": {
+        "technological": {
+          "INNOVATIVE_TECHNOLOGIST": "Tecnólogo Innovador",
+          "HIGH_TECHNOLOGY_PROCESS_SPECIALIST_III": "Especialista Proceso de Alta Tecnología III",
+          "HIGH_TECH_PROCESS_SPECIALIST_II": "Especialista Proceso de Alta Tecnología II",
+          "HIGH_TECH_PROCESS_SPECIALIST_I": "Especialista Proceso de Alta Tecnología I",
+          "THIRD_LEVEL_ADVANCED_TECHNOLOGIST": "Tecnólogo de Avanzada de Tercer Nivel",
+          "SECOND_LEVEL_ADVANCED_TECHNOLOGIST": "Tecnólogo de Avanzada de Segundo Nivel",
+          "ADVANCED_TECHNOLOGIST_FIRST_LEVEL": "Tecnólogo de Avanzada de Primer Nivel",
+          "SENIOR_BIOTECHNOLOGIST_III_LEVEL": "Biotecnólogo Superior III Nivel",
+          "SENIOR_BIOTECHNOLOGIST_II_LEVEL": "Biotecnólogo Superior II Nivel",
+          "SENIOR_BIOTECHNOLOGIST_I_LEVEL": "Biotecnólogo Superior I Nivel"
+        },
+        "englishLevel": {
+          "A1": "A1",
+          "A2": "A2",
+          "B1": "B1",
+          "B2": "B2",
+          "C1": "C1",
+          "C2": "C2"
+        },
+        "scientificDegree": {
+          "DOCTOR_OF_SCIENCE": "Doctor en determinada especialidad (DrC)",
+          "DOCTOR_OF_SCIENCES": "Doctor en Ciencias (DrCs)"
+        },
+        "scientific": {
+          "ASPIRANT_RESEARCH": "Aspirante a investigador",
+          "AGGREGATE_RESEARCH": "Investigador Agregado",
+          "ASSISTANT_RESEARCH": "Investigador Auxiliar",
+          "PRINCIPAL_RESEARCH": "Investigador Titular"
+        },
+        "academicDegree": {
+          "MASTER_OF_SCIENCES": "Master en ciencias",
+          "SPECIALIST": "Especialista en posgrado"
+        },
+        "educational": {
+          "INSTRUCTOR_PROFESSOR": "Profesor Instructor",
+          "ASSISTANT_PROFESSOR": "Profesor Asistente",
+          "AUXILIARY_PROFESSOR": "Profesor Auxiliar",
+          "PRINCIPAL_PROFESSOR": "Profesor Titulr"
+        }
+      }
+    }
+  }
+}
