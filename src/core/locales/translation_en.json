@@ -1,6 +1,0 @@
-{
-  "errorMessages": {
-    "networkError": "Network Error. Please check your internet connection.",
-    "unauthorized": "Unauthorized. Please log in again."
-  }
-}
