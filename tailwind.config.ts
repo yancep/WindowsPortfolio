@@ -1,18 +1,78 @@
-import type { Config } from "tailwindcss";
+import { heroui } from "@heroui/theme";
 
-export default {
+module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
+    './src/app/**/*.tsx',
+    './src/features/**/*.tsx',
+    './src/components/**/*.tsx',
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  darkMode: 'class',
+  plugins: [
+    heroui({
+      prefix: 'nextui', 
+      addCommonColors: false, 
+      defaultTheme: 'light', 
+      defaultExtendTheme: 'light',
+      themes: {
+        light: {
+          layout: {
+            radius: {},
+          }, 
+          colors: {
+            default: {
+              DEFAULT: '#E7EAF3',
+              500: '#71717A',
+            },
+            primary: {
+              DEFAULT: '#0A2759',
+              500: '#06C5951A',
+              foreground: '#ffffff',
+            },
+            secondary: {
+              DEFAULT: '#51596C',
+              foreground: '#ffffff',
+            },
+            success: {
+              DEFAULT: '#077C76',
+              foreground: '#ffffff',
+            },
+            warning: {
+              DEFAULT: '#F1B980',
+              foreground: '#ffffff',
+            },
+            danger: {
+              DEFAULT: '#ee6a5f',
+              500: '#cc648f',
+              foreground: '#ffffff',
+            },
+            overlay: {
+              DEFAULT: '#000000',
+            },
+          }, 
+        },
+        dark: {
+          layout: {}, 
+          colors: {
+            primary: {
+              DEFAULT: '#0A2759',
+              foreground: '#ffffff',
+            },
+            secondary: { DEFAULT: '#51596C', foreground: '#ffffff' },
+            success: { DEFAULT: '#077C76', foreground: '#ffffff' },
+            warning: { DEFAULT: '#F1B980', foreground: '#ffffff' },
+            danger: { DEFAULT: '#692340', foreground: '#ffffff' },
+          }, 
+        },
+      },
+    }),
+  ],
+};
+

@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import { ReactNode } from 'react';
-
+import '@/src/global.css';
 
 export default async function RootLayout({
   children,
