@@ -12,9 +12,8 @@ export default async function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>GAPID</title>
+        <title>Portafolio</title>
         <link rel="icon" href="/favicon.svg" sizes="any" />
-        <script type="text/javascript" src="/pdf.js"></script>
       </head>
       <body>
         {children}
