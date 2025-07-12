@@ -1,4 +1,10 @@
-"use client"
+export default function Component() {
+  return (
+    <div className="flex min-h-screen w-full bg-[#0f0f0fff]">
+    </div>
+  );
+};
+/*"use client"
 import { ReactNode } from "react";
 
 export default function Component() {
@@ -102,3 +108,4 @@ export function YouTubeSearchIcon() {
     </svg>
   );
 }
+*/
