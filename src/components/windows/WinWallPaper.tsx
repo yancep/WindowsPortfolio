@@ -1,10 +1,7 @@
-import Image from 'next/image'
-
 export default function WinWallPaper() {
-    return <Image
+    return <img
         alt="Windows 11 Wallpaper"
         src="/whallpaper.jpg"
-        fill
-        style={{ objectFit: 'cover' }}
+        className="z-0 w-full h-full"
     />
 }
