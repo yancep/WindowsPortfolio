@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { WinTaskBar } from './WinTaskBar'
 import WinWallPaper from './WinWallPaper'
 import WinSearchModal from './WinSearchModal'
-import WinContainer from './WinCOntainet'
+import WinContainer from './WinContainer'
 
 export default function WinDesktop() {
   const [searchModalOpen, setSearchModalOpen] = useState(false)
