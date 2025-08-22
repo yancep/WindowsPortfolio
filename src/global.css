@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .win-search {
     background-color: #324075ff;
     border-radius: 9999px;
@@ -16,3 +22,27 @@
 .win-search:hover {
     background-color: #3b4986;
 }     
+
+.back {
+    background: url("/whallpaper.jpg");
+    object-fit: cover;
+}
+
+.win-search2 {
+    background-color: rgba(25, 30, 49, 0.858);
+    border-radius: 9999px;
+    border-top-color: white;
+    align-items: center;
+    padding-left: 1rem;
+    height: 95%;
+    border: solid rgba(128, 128, 128, 0.244) 1px;
+}
+
+.win-search2:hover {
+    background-color: #3b4986;
+}     
+
+.back {
+    background: url("/whallpaper.jpg");
+    object-fit: cover;
+}
