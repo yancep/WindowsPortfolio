@@ -7,8 +7,10 @@ import {
 import { Battery100Icon } from "@heroicons/react/24/solid";
 export default function WinTaskBarSystemOptions({
   openWinArrow,
+  openWinOptions
 }: {
   openWinArrow: () => void;
+  openWinOptions: () => void;
 }) {
   return (
     <div className="absolute flex flex-row items-center right-3">
@@ -20,7 +22,7 @@ export default function WinTaskBarSystemOptions({
           className="h-4 w-4 text-white"
         />
       </div>
-      <div className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 hover:rounded-md w-13 px-2">
+      <div onClick={() => openWinOptions()} className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 hover:rounded-md w-13 px-2">
         <WifiIcon className="h-4 w-4 text-white" />
         <SpeakerWaveIcon className="h-4 w-4 text-white" />
         <Battery100Icon className="h-4 w-5 text-white" />
