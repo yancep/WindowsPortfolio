@@ -6,60 +6,6 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { AppItem } from "./WinSearchModal";
 
-const ITEM_TYPE = "APP";
-
-type IconItem = AppItem & { slot: number };
-
-function AppIcon({ item }: { item: IconItem }) {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: ITEM_TYPE,
-    item: { id: item.id, fromSlot: item.slot },
-    collect: (monitor) => ({ isDragging: monitor.isDragging() }),
-  }));
-
-  return (
-    <div
-      ref={(node) => {
-        if (drag) (drag as unknown as (el: Element | null) => void)(node);
-      }}
-      className={`flex flex-col justify-center items-center text-white rounded-md cursor-grab select-none ${
-        isDragging ? "opacity-40" : "hover:bg-white/10"
-      }`}
-      style={{ width: 80, height: 80 }}
-    >
-      <Image alt={item.name} src={item.src} width={45} height={45} />
-      <div className="text-xs mt-2 truncate w-20 text-center">{item.name}</div>
-    </div>
-  );
-}
-
-function Slot({
-  slotIndex,
-  children,
-  onDropApp,
-}: {
-  slotIndex: number;
-  children: React.ReactNode;
-  onDropApp: (draggedId: string, toSlot: number) => void;
-}) {
-  const [, drop] = useDrop(() => ({
-    accept: ITEM_TYPE,
-    drop: (dragged: any) => onDropApp(dragged.id, slotIndex),
-    collect: () => ({}),
-  }));
-
-  return (
-    <div
-      ref={(node) => {
-        if (drop) (drop as unknown as (el: Element | null) => void)(node);
-      }}
-      className="relative w-full h-full flex items-start justify-center p-0"
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function WinContainer({
   children,
   items = [],
@@ -132,7 +78,8 @@ export default function WinContainer({
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="relative w-screen h-screen overflow-hidden">
-        <div className="absolute inset-0 grid grid-rows-8 grid-cols-10 grid-flow-col gap-0 text-xs back">
+        <div className="absolute inset-0 back -z-10" />
+        <div className="absolute inset-0 grid grid-rows-8 grid-cols-10 grid-flow-col gap-0 text-xs">
           {Array.from({ length: slotsCount }).map((_, i) => (
             <div key={i} className="flex items-center justify-center p-1">
               <Slot slotIndex={i} onDropApp={moveApp}>
@@ -151,5 +98,59 @@ export default function WinContainer({
         </div>
       </div>
     </DndProvider>
+  );
+}
+
+const ITEM_TYPE = "APP";
+
+type IconItem = AppItem & { slot: number };
+
+function AppIcon({ item }: { item: IconItem }) {
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: ITEM_TYPE,
+    item: { id: item.id, fromSlot: item.slot },
+    collect: (monitor) => ({ isDragging: monitor.isDragging() }),
+  }));
+
+  return (
+    <div
+      ref={(node) => {
+        if (drag) (drag as unknown as (el: Element | null) => void)(node);
+      }}
+      className={`flex flex-col justify-center items-center text-white rounded-md cursor-grab select-none ${
+        isDragging ? "opacity-40" : "hover:bg-white/10"
+      }`}
+      style={{ width: 80, height: 80 }}
+    >
+      <Image alt={item.name} src={item.src} width={45} height={45} />
+      <div className="text-xs mt-2 truncate w-20 text-center">{item.name}</div>
+    </div>
+  );
+}
+
+function Slot({
+  slotIndex,
+  children,
+  onDropApp,
+}: {
+  slotIndex: number;
+  children: React.ReactNode;
+  onDropApp: (draggedId: string, toSlot: number) => void;
+}) {
+  const [, drop] = useDrop(() => ({
+    accept: ITEM_TYPE,
+    drop: (dragged: any) => onDropApp(dragged.id, slotIndex),
+    collect: () => ({}),
+  }));
+
+  return (
+    <div
+      ref={(node) => {
+        if (drop) (drop as unknown as (el: Element | null) => void)(node);
+      }}
+      className="relative w-full h-full flex items-start justify-center p-0"
+    >
+      {children}
+    </div>
   );
 }

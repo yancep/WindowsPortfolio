@@ -24,9 +24,18 @@ body {
 }     
 
 .back {
-    background: url("/whallpaper.jpg");
-    object-fit: cover;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/whallpaper.jpg"); /* /public/whallpaper.jpg */
+  background-size: cover;    /* o 'contain' si no quieres recorte */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* redundante con -z-10, pero seguro */
 }
+
+
 
 .win-search2 {
     background-color: rgba(25, 30, 49, 0.858);
