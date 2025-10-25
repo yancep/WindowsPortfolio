@@ -1,7 +1,6 @@
 import { JSX, useState, useRef, useEffect } from 'react';
 import { Folder, File, ChevronRight, ChevronDown, X, Minus, Square, Home, Star, HardDrive, Monitor, ArrowLeft, ArrowRight, ArrowUp, Search, FileImage, Music, Video, FileText, Download, LucideIcon } from 'lucide-react';
 
-// Types
 interface FileItem {
   name: string;
   type: 'file' | 'folder';
@@ -36,7 +35,6 @@ interface FileExplorerProps {
   onClose: () => void;
 }
 
-// Componente de Ventana de Windows 11
 function WindowsModal({ title, icon, onClose, children, className = "" }: WindowsModalProps) {
   const [isMaximized, setIsMaximized] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -48,7 +46,6 @@ function WindowsModal({ title, icon, onClose, children, className = "" }: Window
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Centrar la ventana al inicio
     const updatePosition = () => {
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
@@ -96,7 +93,6 @@ function WindowsModal({ title, icon, onClose, children, className = "" }: Window
         const newX = e.clientX - dragStart.x;
         const newY = e.clientY - dragStart.y;
         
-        // Limitar el movimiento dentro de la ventana
         const maxX = window.innerWidth - size.width;
         const maxY = window.innerHeight - size.height;
         
@@ -223,7 +219,6 @@ function WindowsModal({ title, icon, onClose, children, className = "" }: Window
   );
 }
 
-// Componente File Explorer
 export default function FileExplorer({ onClose }: FileExplorerProps) {
   const [selectedFolder, setSelectedFolder] = useState<string>('Desktop');
   const [expandedFolders, setExpandedFolders] = useState<string[]>(['This PC', 'Quick access']);

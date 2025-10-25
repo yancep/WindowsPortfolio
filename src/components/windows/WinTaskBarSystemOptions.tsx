@@ -44,7 +44,6 @@ export function WinTaskBarTime() {
   hours = hours % 12;
   hours = hours === 0 ? 12 : hours;
 
-  // Fecha
   const day = time.getDate().toString().padStart(2, "0");
   const month = (time.getMonth() + 1).toString().padStart(2, "0");
   const year = time.getFullYear();

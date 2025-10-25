@@ -16,7 +16,6 @@ export default function OptionsModal({
     if (isOpen) {
       setVisible(true);
     } else {
-      // Espera la animación antes de desmontar
       const t = setTimeout(() => setVisible(false), 200);
       return () => clearTimeout(t);
     }
