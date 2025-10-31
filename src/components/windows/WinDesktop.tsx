@@ -7,6 +7,8 @@ import WinContainer from "./WinContainer";
 import WinModal from "./WinModal";
 import WinArrowModal from "./WinArrowModal";
 import OptionsModal from "./OptionsModal";
+import { WindowStoreProvider, useWindowStore } from "./WindowStore";
+import BrowserWindow from "./BrowserWindow";
 
 export default function WinDesktop() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -18,7 +20,36 @@ export default function WinDesktop() {
   const closeWinModal = () => setSearchWinModalOpen(false);
   const closeWinArrowModal = () => setWinArrowModalOpen(false);
 
+  const openSearchModal = () => {
+    setSearchModalOpen(true);
+    setSearchWinModalOpen(false);
+    setWinArrowModalOpen(false);
+    onCloseOptions();
+  };
+
+  const openStartModal = () => {
+    setSearchWinModalOpen(true);
+    setSearchModalOpen(false);
+    setWinArrowModalOpen(false);
+    onCloseOptions();
+  };
+
+  const openArrowModal = () => {
+    setWinArrowModalOpen(true);
+    setSearchModalOpen(false);
+    setSearchWinModalOpen(false);
+    onCloseOptions();
+  };
+
+  const openOptionsModal = () => {
+    onOpenOptions();
+    setSearchModalOpen(false);
+    setSearchWinModalOpen(false);
+    setWinArrowModalOpen(false);
+  };
+
   return (
+    <WindowStoreProvider>
     <WinContainer
       items={[
         { id: "16", src: "/recycle.png", name: "Windows" },
@@ -40,11 +71,7 @@ export default function WinDesktop() {
         <OptionsModal
           isOpen={isOpenOptions}
           onClose={onCloseOptions}
-          onOpenSearch={() => {
-            setSearchModalOpen(true);
-            setSearchWinModalOpen(false);
-            setWinArrowModalOpen(false);
-          }}
+          onOpenSearch={openSearchModal}
         />
 
         <WinArrowModal
@@ -68,13 +95,15 @@ export default function WinDesktop() {
 
       <div className="relative z-50 pointer-events-auto">
         <WinTaskBar
-          openSearch={() => setSearchModalOpen(true)}
-          openWinSearch={() => setSearchWinModalOpen(true)}
-          openWinArrow={() => setWinArrowModalOpen(true)}
-          openWinOptions={() => onOpenOptions()}
+          openSearch={openSearchModal}
+          openWinSearch={openStartModal}
+          openWinArrow={openArrowModal}
+          openWinOptions={openOptionsModal}
         />
       </div>
+      <WindowsRenderer />
     </WinContainer>
+    </WindowStoreProvider>
   );
 }
 
@@ -87,3 +116,21 @@ const useModal = () => {
 
   return { isOpen, onClose, onOpen };
 };
+
+function WindowsRenderer() {
+  const { windows } = useWindowStore();
+  if (!windows.length) return null;
+  return (
+    <>
+      {windows
+        .filter(w => !w.minimized)
+        .sort((a,b) => a.z - b.z)
+        .map(w => {
+          if (w.type === 'browser') {
+            return <BrowserWindow key={w.id} id={w.id} isOpen={true} />;
+          }
+          return null;
+        })}
+    </>
+  );
+}

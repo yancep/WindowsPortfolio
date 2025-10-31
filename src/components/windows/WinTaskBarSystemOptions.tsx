@@ -14,20 +14,20 @@ export default function WinTaskBarSystemOptions({
 }) {
   return (
     <div className="absolute flex flex-row items-center right-3">
-      <div className="flex flex-row h-10 items-center hover:bg-white/10 hover:rounded-md w-13 px-2">
+      <button className="flex flex-row h-10 items-center hover:bg-white/10 rounded-md w-13 px-2" aria-label="Open tray" title="Show hidden icons">
         <ChevronUpIcon
           onClick={() => {
             openWinArrow();
           }}
           className="h-4 w-4 text-white"
         />
-      </div>
-      <div onClick={() => openWinOptions()} className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 hover:rounded-md w-13 px-2">
+      </button>
+      <button onClick={() => openWinOptions()} className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 rounded-md w-13 px-3" aria-label="Open quick settings" title="Quick settings">
         <WifiIcon className="h-4 w-4 text-white" />
         <SpeakerWaveIcon className="h-4 w-4 text-white" />
         <Battery100Icon className="h-4 w-5 text-white" />
-      </div>
-      <div className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 hover:rounded-md w-13 px-2">
+      </button>
+      <div className="flex flex-row gap-2 h-10 items-center hover:bg-white/10 rounded-md w-13 px-3">
         <WinTaskBarTime />
         <BellIcon width={25} height={25} color="white" />
       </div>
@@ -49,20 +49,11 @@ export function WinTaskBarTime() {
   const year = time.getFullYear();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        color: "white",
-        justifyContent: "right",
-        textAlign: "right",
-        lineHeight: "1",
-      }}
-    >
-      <span>
+    <div className="flex flex-col text-white items-end leading-[1.05]">
+      <span className="text-[12px]">
         {hours}:{minutes} {ampm}
       </span>
-      <span>
+      <span className="text-[11px] text-white/80">
         {day}/{month}/{year}
       </span>
     </div>

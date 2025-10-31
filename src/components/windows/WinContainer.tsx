@@ -117,10 +117,18 @@ function AppIcon({ item }: { item: IconItem }) {
       ref={(node) => {
         if (drag) (drag as unknown as (el: Element | null) => void)(node);
       }}
-      className={`flex flex-col justify-center items-center text-white rounded-md cursor-grab select-none ${
+      className={`flex flex-col justify-center items-center text-white rounded-md cursor-grab select-none transition-colors outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-transparent ${
         isDragging ? "opacity-40" : "hover:bg-white/10"
       }`}
+      role="button"
+      tabIndex={0}
+      title={item.name}
       style={{ width: 80, height: 80 }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+        }
+      }}
     >
       <Image alt={item.name} src={item.src} width={45} height={45} />
       <div className="text-xs mt-2 truncate w-20 text-center">{item.name}</div>
