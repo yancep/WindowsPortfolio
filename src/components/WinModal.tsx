@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { AppItem } from "./WinSearchModal";
 import {
   ChevronRightIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/16/solid";
 import { useEffect, useRef } from "react";
 import { useWindowStore } from "./WindowStore";
+import { AppItem } from "./WinSearchModal";
 
 export default function WinModal({
   isOpen,

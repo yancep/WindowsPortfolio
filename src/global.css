@@ -52,6 +52,8 @@ body {
 }     
 
 .back {
-    background: url("/whallpaper.jpg");
-    object-fit: cover;
+  background-image: url("/whallpaper.jpg");
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
 }
