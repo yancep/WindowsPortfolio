@@ -1,6 +1,7 @@
 import { AppItem } from "./WinSearchModal";
 import Image from "next/image";
 import { useEffect } from "react";
+
 export default function WinArrowModal({
   isOpen,
   onClose,
@@ -13,7 +14,7 @@ export default function WinArrowModal({
   appItems: AppItem[];
 }) {
   if (!isOpen) return null;
-  
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();

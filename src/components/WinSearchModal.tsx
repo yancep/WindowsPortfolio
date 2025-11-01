@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { useWindowStore } from "./WindowStore";
+
 export default function WinSearchModal({
   isOpen,
   onClose,
