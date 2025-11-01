@@ -13,7 +13,7 @@ export default function BrowserWindow({ id, isOpen, onClose }: { id?: string; is
   const store = (() => { try { return useWindowStore(); } catch { return null; } })();
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose && onClose(); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [onClose]);
@@ -53,15 +53,15 @@ export default function BrowserWindow({ id, isOpen, onClose }: { id?: string; is
             >
               →
             </button>
-            <button onClick={() => store && id ? store.minimizeWindow(id) : null} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><MinusIcon className="w-4 h-4" /></button>
-            <button onClick={() => setIsMaximized(!isMaximized)} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><Squares2X2Icon className="w-4 h-4" /></button>
-            <button onClick={() => { if (store && id) store.closeWindow(id); else onClose && onClose(); }} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><XMarkIcon className="w-4 h-4" /></button>
+            <button title="Minimize" onClick={() => store && id ? store.minimizeWindow(id) : null} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><MinusIcon className="w-4 h-4" /></button>
+            <button title="Maximize" onClick={() => setIsMaximized(!isMaximized)} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><Squares2X2Icon className="w-4 h-4" /></button>
+            <button title="Close" onClick={() => { if (store && id) store.closeWindow(id); else onClose && onClose(); }} className="h-8 w-8 grid place-items-center rounded-md hover:bg-white/10"><XMarkIcon className="w-4 h-4" /></button>
           </div>
           <form
             onSubmit={(e) => { e.preventDefault(); const next = (e.target as any).url.value; setUrl(next); setHistory(prev => [...prev.slice(0, index+1), next]); setIndex(i => i + 1); }}
             className="flex-1 flex items-center gap-2 px-2"
           >
-            <input name="url" defaultValue={url} className="flex-1 h-8 px-3 rounded-full bg-white/10 border border-white/10 outline-none" />
+            <input title="URL" name="url" defaultValue={url} className="flex-1 h-8 px-3 rounded-full bg-white/10 border border-white/10 outline-none" />
             <button className="h-8 px-3 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-sm">Go</button>
           </form>
         </div>
