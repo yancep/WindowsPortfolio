@@ -14,7 +14,7 @@ export default function WinArrowModal({
   appItems: AppItem[];
 }) {
   if (!isOpen) return null;
-  
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
