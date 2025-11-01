@@ -1,8 +1,8 @@
 "use client";
 
-import React, { createContext, useCallback, useContext, useMemo, useRef, useState } from "react";
+import { create } from "zustand";
 
-export type WindowType = 'browser';
+export type WindowType = "browser";
 
 export interface WindowInstance {
   id: string;
@@ -12,55 +12,51 @@ export interface WindowInstance {
   minimized: boolean;
 }
 
-interface WindowStoreValue {
+interface WindowStore {
   windows: WindowInstance[];
-  openWindow: (type: WindowType, opts?: Partial<Pick<WindowInstance, 'title'>>) => string;
+  openWindow: (type: WindowType, opts?: Partial<Pick<WindowInstance, "title">>) => string;
   closeWindow: (id: string) => void;
   focusWindow: (id: string) => void;
   minimizeWindow: (id: string) => void;
   getFirstByType: (type: WindowType) => WindowInstance | undefined;
 }
 
-const WindowStoreContext = createContext<WindowStoreValue | null>(null);
+let zCounter = 100;
 
-export function WindowStoreProvider({ children }: { children: React.ReactNode }) {
-  const [windows, setWindows] = useState<WindowInstance[]>([]);
-  const zCounter = useRef(100);
+export const useWindowStore = create<WindowStore>((set, get) => ({
+  windows: [],
 
-  const focusWindow = useCallback((id: string) => {
-    setWindows((prev) => prev.map(w => w.id === id ? { ...w, z: ++zCounter.current } : w));
-  }, []);
-
-  const openWindow = useCallback((type: WindowType, opts?: Partial<Pick<WindowInstance, 'title'>>) => {
+  openWindow: (type, opts) => {
     const id = `${type}-${Date.now()}`;
-    const title = opts?.title || (type === 'browser' ? 'Microsoft Edge' : 'Window');
-    const z = ++zCounter.current;
-    setWindows(prev => [...prev, { id, type, title, z, minimized: false }]);
+    const title = opts?.title || (type === "browser" ? "Microsoft Edge" : "Window");
+    const z = ++zCounter;
+    set((state) => ({
+      windows: [...state.windows, { id, type, title, z, minimized: false }],
+    }));
     return id;
-  }, []);
+  },
 
-  const closeWindow = useCallback((id: string) => {
-    setWindows(prev => prev.filter(w => w.id !== id));
-  }, []);
+  closeWindow: (id) => {
+    set((state) => ({
+      windows: state.windows.filter((w) => w.id !== id),
+    }));
+  },
 
-  const minimizeWindow = useCallback((id: string) => {
-    setWindows(prev => prev.map(w => w.id === id ? { ...w, minimized: true } : w));
-  }, []);
+  focusWindow: (id) => {
+    set((state) => ({
+      windows: state.windows.map((w) =>
+        w.id === id ? { ...w, z: ++zCounter } : w
+      ),
+    }));
+  },
 
-  const value = useMemo(() => ({ windows, openWindow, closeWindow, focusWindow, minimizeWindow }), [windows, openWindow, closeWindow, focusWindow, minimizeWindow]);
-  const getFirstByType = useCallback((type: WindowType) => windows.find(w => w.type === type), [windows]);
+  minimizeWindow: (id) => {
+    set((state) => ({
+      windows: state.windows.map((w) =>
+        w.id === id ? { ...w, minimized: true } : w
+      ),
+    }));
+  },
 
-  const valueFull = useMemo(() => ({ ...value, getFirstByType }), [value, getFirstByType]);
-
-  return (
-    <WindowStoreContext.Provider value={valueFull}>{children}</WindowStoreContext.Provider>
-  );
-}
-
-export function useWindowStore() {
-  const ctx = useContext(WindowStoreContext);
-  if (!ctx) throw new Error('useWindowStore must be used within WindowStoreProvider');
-  return ctx;
-}
-
-
+  getFirstByType: (type) => get().windows.find((w) => w.type === type),
+}));

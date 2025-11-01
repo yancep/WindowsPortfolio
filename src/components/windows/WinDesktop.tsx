@@ -7,7 +7,7 @@ import WinContainer from "./WinContainer";
 import WinModal from "./WinModal";
 import WinArrowModal from "./WinArrowModal";
 import OptionsModal from "./OptionsModal";
-import { WindowStoreProvider, useWindowStore } from "./WindowStore";
+import { useWindowStore } from "./WindowStore";
 import BrowserWindow from "./BrowserWindow";
 
 export default function WinDesktop() {
@@ -49,7 +49,6 @@ export default function WinDesktop() {
   };
 
   return (
-    <WindowStoreProvider>
     <WinContainer
       items={[
         { id: "16", src: "/recycle.png", name: "Windows" },
@@ -103,7 +102,6 @@ export default function WinDesktop() {
       </div>
       <WindowsRenderer />
     </WinContainer>
-    </WindowStoreProvider>
   );
 }
 
