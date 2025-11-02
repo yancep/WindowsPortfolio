@@ -240,7 +240,6 @@ export default function WinContainer({
           ))}
         </div>
 
-        {/* Menú Contextual */}
         {contextMenu && (
           <ContextMenu
             x={contextMenu.x}
